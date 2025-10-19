@@ -1,0 +1,41 @@
+//program
+//author
+//date
+#include <iostream>
+#include <string>
+#include <random>
+
+
+int main()
+{
+  //generate a random number between 1-50 for the computers choice
+  
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> distrib(1, 50);
+
+  int const COMPUTER_VAL = distrib(gen);
+  int user_guess;
+  //std::cout << COMPUTER_VAL << std::endl;
+
+  std::cout << "Welcome to the Guessing Game.\nI am picking a number between 1 and 50, what is your guess?\n";
+  std::cin >> user_guess;
+
+  while(user_guess != COMPUTER_VAL)
+    {
+      std::cout << "Incorrect guess.";
+      if(user_guess > COMPUTER_VAL)
+	{
+	  std::cout << "Too high.\n";
+	} else
+	{
+	  std::cout << "Too low.\n";
+	}}}
+      std::cout<<
+	
+  
+  //ask the user for guess, store it in variable
+  //if guess too high/low, give feedback for further user attempts
+  //loop until user is correct
+  //let the user know when the guess is correct
+}
