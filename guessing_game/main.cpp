@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <random>
+#include "input_validation.h"
 
 
 int main()
@@ -17,15 +18,10 @@ int main()
   //variables for storing user guess and keeping track of attempts (as well as the lowest score of games)
   int user_guess, computer_choice, upper_bound, score, best_score = 99;
 
-  std::cout << "Welcome to the Guessing Game!\n\nI will pick a number between 1 and any number you choose. Pick the upper bound: ";
-  std::cin >> upper_bound;
-  while(std::cin.fail())
-    {
-      std::cout << "\n*error* input must be int.\nEnter upper bound: ";
-      std::cin.clear();
-      std::cin.ignore(1000,'\n');
-      std::cin >> upper_bound;
-    }
+  std::cout << "\n\nWelcome to the Guessing Game!\n";
+  
+  upper_bound = get_valid_integer("\nI will pick a number between 1 and any number you choose. Pick the upper bound: ");
+
   std::uniform_int_distribution<> distrib(1, upper_bound);
   while(play_again)
     {
