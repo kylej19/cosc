@@ -1,6 +1,6 @@
-//program
-//author
-//date
+//program: guessing-game
+//author: Kyle Johnson
+//date: Oct 11, 2025
 #include <iostream>
 #include <string>
 #include <random>
