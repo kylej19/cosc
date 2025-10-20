@@ -13,62 +13,44 @@ int main()
   std::random_device rd;
   std::mt19937 gen(rd());
   //a flag for replaying the game
-  bool play_again {true};
-  char user_choice;
+  int play_again {1};
   //variables for storing user guess and keeping track of attempts (as well as the lowest score of games)
   int user_guess, computer_choice, upper_bound, score, best_score = 99;
 
-  std::cout << "\n\nWelcome to the Guessing Game!\n";
+  std::cout << "\n*****\t\t*****\nwelcome to the guessing game!\n";
   
-  upper_bound = get_valid_integer("\nI will pick a number between 1 and any number you choose. Pick the upper bound: ");
+  upper_bound = get_valid_integer("\ni will pick a number between 1 and any number you choose. enter the upper bound: ");
 
   std::uniform_int_distribution<> distrib(1, upper_bound);
   while(play_again)
     {
       score = 1;
       computer_choice = distrib(gen);      
-      std::cout << "\nI am thinking of a number! What is it? ";
-      std::cin >> user_guess;
-      if(std::cin.fail())
-	{
-	  std::cout << "\n*error* input must be int.\n enter guess: ";
-	  std::cin.clear();
-	  std::cin.ignore(1000,'\n');
-	  continue;
-	}
-      if(std::cin.peek() != '\n' && std::cin.peek() != EOF)
-	{
-	  std::cout << "\n*error* invalid input detected. remove any non-integer characters.\n";
-	  std::cin.ignore(1000,'\n');
-	  continue;
-	}
+      user_guess = get_valid_integer("\ni have my number. what is your guess? ");
       while(user_guess != computer_choice)
 	{
-	  std::cout << "\n[x]\tIncorrect guess.\n";
+	  std::cout << "\n[x]\tincorrect guess.\n";
 	  if(user_guess > computer_choice)
 	    {
-	      std::cout << "(Your guess was too high).\n";
+	      std::cout << user_guess << " is too high.\n";
 	    } else
 	    {
-	      std::cout << "(Your guess was too low).\n";
+	      std::cout << user_guess << " is too low.\n";
 	    }
-	  std::cout << "Guess again: ";
 	  score++;
-	  std::cin >> user_guess;
+	  user_guess = get_valid_integer("guess again: ");
 	}
-      std::cout << "\nYou are correct! The number was " << computer_choice
-		<< "\nIt took you " << score << " attempts.\n";
+      std::cout << "\nyou are correct! my number was " << computer_choice
+		<< "\nit took you " << score << " attempts.\n";
       
       if(score < best_score)
 	{
-	  std::cout << "***You set a new best score! " << score << " attempts.***\n";
+	  std::cout << "\n***you set a new best score!\t" << score << " attempts.***\n";
 	  best_score = score;
 	}
-      
-      std::cout << "Play again? [Y/n] ";
-      std::cin >> user_choice;
-      
-      if(user_choice == 'N' || user_choice == 'n') play_again = false;
+
+      play_again = get_valid_integer("\nplay again? 1 for no, any other number for yes: ");
+      if(play_again == 1) play_again = 0;
     }
 
   std::cout << std::endl;

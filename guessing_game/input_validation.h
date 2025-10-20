@@ -36,10 +36,9 @@ int get_valid_integer(const std::string& prompt_message)
 	  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	  continue;
 	}
-      if(value < 0)
+      if(value < 1)
 	{
 	  std::cout << "\n*error* value must be greater than 0.\n";
-	  std::cin.clear();
 	  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	  continue;
 	}
