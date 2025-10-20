@@ -19,15 +19,33 @@ int main()
 
   std::cout << "Welcome to the Guessing Game!\n\nI will pick a number between 1 and any number you choose. Pick the upper bound: ";
   std::cin >> upper_bound;
+  while(std::cin.fail())
+    {
+      std::cout << "\n*error* input must be int.\nEnter upper bound: ";
+      std::cin.clear();
+      std::cin.ignore(1000,'\n');
+      std::cin >> upper_bound;
+    }
   std::uniform_int_distribution<> distrib(1, upper_bound);
-
-  
   while(play_again)
     {
       score = 1;
       computer_choice = distrib(gen);      
       std::cout << "\nI am thinking of a number! What is it? ";
       std::cin >> user_guess;
+      if(std::cin.fail())
+	{
+	  std::cout << "\n*error* input must be int.\n enter guess: ";
+	  std::cin.clear();
+	  std::cin.ignore(1000,'\n');
+	  continue;
+	}
+      if(std::cin.peek() != '\n' && std::cin.peek() != EOF)
+	{
+	  std::cout << "\n*error* invalid input detected. remove any non-integer characters.\n";
+	  std::cin.ignore(1000,'\n');
+	  continue;
+	}
       while(user_guess != computer_choice)
 	{
 	  std::cout << "\n[x]\tIncorrect guess.\n";
@@ -56,6 +74,6 @@ int main()
       
       if(user_choice == 'N' || user_choice == 'n') play_again = false;
     }
-  
+
   std::cout << std::endl;
 }
