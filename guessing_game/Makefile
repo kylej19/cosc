@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Wpedantic -Wshadow -std=c++20
 TARGET = guessing-game
-SOURCES = main.cpp input_validation.h
+SOURCES = main.cpp input_validation.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
