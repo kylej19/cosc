@@ -6,7 +6,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
 
-$TARGET: $(OBJECTS)
+$(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET)
 
 %.o: %.cpp
