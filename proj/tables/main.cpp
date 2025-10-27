@@ -27,15 +27,16 @@ int main() {
   //print multiplication table with X rows and Y columns
   for(int i = 0; i <= rows; i++)
     {
+      if(i == 1) std::cout << '\n';
       std::cout << '\n';
       for(int j = 0; j <= cols; j++)
 	{
-	  if(i < 1)
-	    { std::cout << j << '\t'; }
+	  if(i < 1 && j > 0)
+	    { std::cout << "\t" << j; }
 	  else if (j < 1)
-	    { std::cout << i << " |\t"; }
-	  else
-	    { std::cout << i*j << '\t'; }
+	    { std::cout << i << "\t"; }
+	  else 
+	    { std::cout << "\t" << i*j; }
 	}
     }
 
