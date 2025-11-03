@@ -2,32 +2,32 @@
 #include <random>
 #include <string>
 
-#include <cstdlib>
-#include <ctime>
+
+void changePin(int& pinNum);
 
 int main()
 {
-  // rand
-  std::random_device rd;
-  std::mt19937  gen(rd());
-  std::uniform_int_distribution<int> distrib(1,3);
-
-  std::cout << "running exercise. press [0] to end." << '\n';
 
   // class exercises ...
 
-  std::srand(std::time(0));
+  //overloading functions
 
-  int user_choice = 1;
-  do {
+  int pin = 1234;
 
-    int cpu_val1 = distrib(gen);
-    int cpu_val2 = distrib(gen);
-    std::cout << cpu_val1 << '\n' << cpu_val2 << '\n';
-    std::cin >> user_choice;
+  std::cout << pin << "\n";
+  changePin(pin);
+  std::cout << pin << "\n";
 
-  } while (user_choice);
+  return 0;
 
+}
+
+void changePin(int& pin)
+{
+    // rand
+  std::random_device rd;
+  std::mt19937  gen(rd());
+  std::uniform_int_distribution<int> distrib(1000,9999);
+  pin =  distrib(gen);
   
-  std::cout << std::endl;
 }

@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Wpedantic -Wshadow -std=c++20
+CXXFLAGS = -Wall -Wextra -std=c++20
 TARGET = scratch
 SOURCES = main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -11,4 +11,5 @@ $(TARGET): $(OBJECTS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-clean: rm -fv $(TARGET) $(OBJECTS)
+clean:
+	rm -fv $(TARGET) $(OBJECTS)
