@@ -15,12 +15,7 @@ std::string displayWordChoice(int);
 
 int main()
 {
-  //random number generator
-  std::random_device rd;
-  //uses mersenne twister algorithm (i was told it is a good algorithm by gemini)
-  std::mt19937 gen(rd());
-  //this is what will return the random number, in a range that fits our purposes
-  std::uniform_int_distribution<> shoot(1,3);
+
   int computerChoice, playerChoice, winningPlayer;
   char playAgain;
   do {
@@ -35,7 +30,7 @@ int main()
 	std::cout << "What do you choose? ";
 	std::cin >> playerChoice;
       }
-    std::cout << endl << "You chose: " << displayWordChoice(playerChoice) << std::endl;
+    std::cout << std::endl << "You chose: " << displayWordChoice(playerChoice) << std::endl;
     std::cout << "Computer chose: " << displayWordChoice(computerChoice) << std::endl;
     winningPlayer = chooseWinner(playerChoice, computerChoice);
     if (winningPlayer == 1)
@@ -51,11 +46,21 @@ int main()
    return 0;
 }
 
+
 //getComputerChoice returns a random number 1-3 symbolizing the 
 //computer choosing rock, paper, or scissors (in that order)
 int getComputerChoice()
 {
-  return shoot(gen());
+  //random number generator
+  std::random_device rd;
+  //uses mersenne twister algorithm (i was told it is a good algorithm by gemini)
+  std::mt19937 gen(rd());
+  //this is what will return the random number, in a range that fits our purposes
+  std::uniform_int_distribution<> shoot(1,3);
+
+  int cpu_val = shoot(gen());
+  
+  return cpu_val;
 }
 
 //printMenu prints a menu of options for the user.  Choices are 1-3
@@ -74,9 +79,9 @@ void printMenu()
 
 int chooseWinner(int cpu, int player)
 {
-  if(cpu ==  1 && player == 2 || cpu == 2 && player == 3 || cpu == 3 && player == 1)
+  if((cpu ==  1 && player == 2) || (cpu == 2 && player == 3) || (cpu == 3 && player == 1))
     return 1;
-  else if (cpu == 1 && player == 3 || cpu == 2 && player == 1 || cpu == 3 && player == 2)
+  else if ((cpu == 1 && player == 3) || (cpu == 2 && player == 1) || (cpu == 3 && player == 2))
     return 2;
   else return 3;
 }
