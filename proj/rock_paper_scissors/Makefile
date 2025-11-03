@@ -11,4 +11,5 @@ $(TARGET): $(OBJECTS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-clean: rm -fv $(TARGET) $(OBJECTS)
+clean:
+	rm -fv $(TARGET) $(OBJECTS)
