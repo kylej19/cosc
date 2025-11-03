@@ -1,4 +1,4 @@
-CXX = g++-15
+CXX = g++
 CXXFLAGS = -Wall -Wextra -Wpedantic -Wshadow -std=c++20
 TARGET = rock-paper-scissors
 SOURCES = main.cpp
