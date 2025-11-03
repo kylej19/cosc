@@ -57,8 +57,7 @@ int getComputerChoice()
   std::mt19937 gen(rd());
   //this is what will return the random number, in a range that fits our purposes
   std::uniform_int_distribution<> shoot(1,3);
-
-  int cpu_val = shoot(gen());
+  int cpu_val = shoot(gen);
   
   return cpu_val;
 }
@@ -67,7 +66,8 @@ int getComputerChoice()
 //symbolizing choosing rock, paper, or scissors (in that order)
 void printMenu()
 {
-  std::cout << "\nselect option:\n1 - rock\n2 - paper\n3 - scissors\n";
+  std::cout << "let's play rock, paper, scissors.\n";
+  std::cout << "\nselect option:\n1 - rock\n2 - paper\n3 - scissors\n" << std::endl;
 }
 
 //chooseWinner returns a 1 if the user wins, 2 if the Computer wins,
@@ -80,9 +80,9 @@ void printMenu()
 int chooseWinner(int cpu, int player)
 {
   if((cpu ==  1 && player == 2) || (cpu == 2 && player == 3) || (cpu == 3 && player == 1))
-    return 1;
-  else if ((cpu == 1 && player == 3) || (cpu == 2 && player == 1) || (cpu == 3 && player == 2))
     return 2;
+  else if ((cpu == 1 && player == 3) || (cpu == 2 && player == 1) || (cpu == 3 && player == 2))
+    return 1;
   else return 3;
 }
 
