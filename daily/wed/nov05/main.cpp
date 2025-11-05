@@ -15,16 +15,12 @@ int main()
 
   // class exercises ...
 
-  std::vector<int> grades (8,0);
+  std::vector<int> v (8,0);
   
-  for(int i = 0; i <= grades.size(); i++)
-    {
-      grades[i] = distribute(generator);
-      std::cout << "grade" << i+1 << ": " << grades[i] << "\n";
-    }
-    
+  for(int i = 0; i <= v.size(); i++) v[i] = distribute(generator);
+
+  for(int i = 0; i <= v.size(); i++)
 
 
-  
   std::cout << std::endl;
 }
