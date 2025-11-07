@@ -15,12 +15,10 @@ int main()
 
   // class exercises ...
 
-  std::vector<int> v (8,0);
+  unsigned row = comp_val, col = comp_val;
+
+  int table[row][col];
   
-  for(int i = 0; i <= v.size(); i++) v[i] = distribute(generator);
-
-  for(int i = 0; i <= v.size(); i++)
-
 
   std::cout << std::endl;
 }
