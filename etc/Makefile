@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++20
-TARGET = scratch
+TARGET = app.out
 SOURCES = main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
