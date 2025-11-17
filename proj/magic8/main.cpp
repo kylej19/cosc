@@ -1,6 +1,5 @@
 #include <iostream>
 #include <random>
-#include <string>
 
 int main()
 {
@@ -9,10 +8,10 @@ int main()
   std::mt19937  generator(rn_dev()); // engine
   std::uniform_int_distribution<int> distribute(0,7); // implement
 
-  std::string user_query;
+  std::string user_query, replay;
   bool flag;
 
-  std::string[8] response = { "\nIt is certain.",
+  std::string response[8] = { "\nIt is certain.",
     "\nIt is decidedly so.",
     "\nWithout a doubt.",
     "\nCannot predict now.",
@@ -27,12 +26,21 @@ int main()
   do {
     std::cout << "\nwhat do you seek? ";
     std::cin >> user_query;
+
+    
     std::cout << response[distribute(generator)];
     std::cout << "\n\ndo you have any additional queries? (y/N) ";
-    std::string replay;
+
+    std::cin.ignore();    
     std::cin >> replay;
-    if(replay == "y" || replay == "Y" || replay == "yes" || replay == "Yes") flag = true;
-    else flag = false;
+    if(replay == "y" || replay == "Y" || replay == "yes" || replay == "Yes")
+      {
+	flag = true;
+      }
+    else
+      {
+	flag = false;
+      }
   } while (flag);
 
   std::cout << "\ngoodbye.";
