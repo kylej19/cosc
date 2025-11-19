@@ -1,3 +1,28 @@
+CONSOLE:
+THE MAGIC 8BALL
+
+seek and you shall find
+
+what do you seek? why?
+
+It is decidedly so.
+
+do you have any additional queries? (y/N) y
+
+what do you seek? will my code run this time?
+
+Cannot predict now.
+
+do you have any additional queries? (y/N) y
+
+what do you seek? what about now?   
+
+Cannot predict now.
+
+do you have any additional queries? (y/N) n
+
+goodbye.
+SOURCE:
 #include <iostream>
 #include <random>
 
