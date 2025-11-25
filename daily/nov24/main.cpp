@@ -12,25 +12,31 @@ int main() {
   std::uniform_int_distribution<int> distrib(0,99);
 
   int gold = distrib(gen);
-  std::cout << "gold: " << gold;
+  std::cout << "int gold = distrib(gen);\ngold = " << gold;
 
   int* map = &gold;
-  std::cout << "\nmap: " << map;
-  std::cout << "\n*map: " << *map;
-  std::cout << "\n{*map = 25;}\n";
-  *map = 25;
-  std::cout << "\ngold: "<< gold << "\t*map: " << *map;
+  std::cout << "\n\nint* map = &gold;";
+  std::cout << "\nmap = " << map;
+  std::cout << "\n*map = " << *map;
+  *map = distrib(gen);
+  std::cout << "\n\n*map = distrib(gen);";
+  std::cout << "\ngold = "<< gold << "   *map = " << *map;
+  doubleGold(map);
+  std::cout << "\n\ndoubleGold(map);\n" << "gold = " << gold << "   *map = " << *map;
 
-  int gems[3] = {5,10,15};
+  int gems[3];
+  for(int i = 0; i < 3;i++) {
+    *(gems + i) = distrib(gen);
+  }
   int* bag = gems;
 
-  std::cout << "\n\n*bag: " << *bag;
-  std::cout << "\n*bag + 1: " << *(bag + 1);
-  std::cout << "\n*bag + 2: " << *(bag + 2);
-
-  doubleGold(map);
-
-  std::cout << "\n\ngold: " << *map;
+  std::cout << "\n\nint gems[3] = {3 random values};" << "\nint* bag = gems;";
+  std::cout << "\ngems[0] = " << gems[0];
+  std::cout << "   *(bag + 0) = " << *(bag + 0);
+  std::cout << "\ngems[1] = " << gems[1];
+  std::cout << "   *(bag + 1) = " << *(bag + 1);
+  std::cout << "\ngems[2] = " << gems[2];
+  std::cout << "   *(bag + 2) = " << *(bag + 2);
 
   std::cout << std::endl;
   //const
