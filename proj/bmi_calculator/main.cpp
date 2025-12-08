@@ -14,7 +14,7 @@ int main()
   double total_cm, metric_m, weight_lb, weight_kg, bmi;
 
   // ask user for input and assign it to our variables
-  std::cout << "Input height (feet, inches): ";
+  std::cout << "Input height (feet [SPACE] inches): ";
   std::cin >> imperial_ft >> imperial_in;
   std::cout << "Input weight (lbs.): ";
   std::cin >> weight_lb;
@@ -34,6 +34,29 @@ int main()
   // output height in meters
   std::cout << std::setprecision(3) << "You are " << metric_m << " meters tall.";
   std::cout << std::setprecision(4) << "\nYou weigh " << weight_kg << " kilograms.";
-  std::cout << std::setprecision(4) << "\nYour BMI is " << bmi << std::endl;
+  std::cout << std::setprecision(4) << "\nYour BMI is " << bmi;
+
+  // bmi classification
+  if(bmi <= 18.5)
+    {
+      std::cout << ". You are underweight." << std::endl;
+    }
+  else if(bmi < 25.0)
+    {
+      std::cout << ". You are at a normal weight." << std::endl;
+    }
+  else if(bmi < 30.0)
+    {
+      std::cout << ". You are overweight." << std::endl;
+    }
+  else if(bmi < 35.0)
+    {
+      std::cout << ". You are mildly obese." << std::endl;
+    }
+  else if(bmi < 40)
+    {
+      std::cout << ". You are obese." << std::endl;
+    }
+  else std::cout << ". You are morbidly obese." << std::endl;
   
 }
