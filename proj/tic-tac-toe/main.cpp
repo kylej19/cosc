@@ -8,20 +8,36 @@ int main()
   std::mt19937 gen(rd());
   std::uniform_int_distribution<int> distrib(0,2);
 
-  int board[3][3] = {
-      {0, 0, 0},
-      {0, 0, 0},
-      {0, 0, 0} };
-  unsigned short total_rows = sizeof(board)/sizeof(board[0]);
-  unsigned short total_cols = sizeof(board[0])/sizeof(board[0][0]);
-  
-  for(unsigned int row = 0; row < total_rows;row++) {
-      for(unsigned int col = 0; col < total_cols;col++) {
-	std::cout << std::setw(4) << "|" << board[row][col] << "|";
-	}
-      std::cout << "\n";      
-    }  
+  const unsigned short SIZE = 3;
+  char playerChar, computerChar;
 
+  char board[SIZE][SIZE] =
+    {
+      {' ', ' ', ' '},
+      {' ', ' ', ' '},
+      {' ', ' ', ' '}
+    };
+
+
+  std::cout << "welcome to tic-tac-toe"
+	    << "\n"
+	    << "\n";
+  std::cout << "which letter do you want to be? [X/O]\n";
+  std::cin >> playerChar;
+  
+  while(playerChar != 'X' || playerChar != 'O')
+    {
+      std::cout << "\n*invalid choice*\nenter either 'X' or 'O' (capital letter only): ";
+      std::cin >> playerChar;
+    }
+  if(playerChar == 'X')
+    { computerChar = 'O';}
+  else computerChar = 'X';
+  
+  for(int i = 0; i < SIZE; i++) {
+    for(int j = 0; j < SIZE; j++) {
+      std::cout << board[i][j] << ((j + 1) % SIZE ? '|' : '\n');
+    } }  
 }
 
 
