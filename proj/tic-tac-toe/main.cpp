@@ -24,15 +24,18 @@ int main()
 	    << "\n";
   std::cout << "which letter do you want to be? [X/O]\n";
   std::cin >> playerChar;
-  
-  while(playerChar != 'X' || playerChar != 'O')
+
+  switch(playerChar)
     {
-      std::cout << "\n*invalid choice*\nenter either 'X' or 'O' (capital letter only): ";
-      std::cin >> playerChar;
+    case 'X' :
+      computerChar = 'O';
+      break;
+    case 'O' :
+      computerChar = 'X';
+      break;
     }
-  if(playerChar == 'X')
-    { computerChar = 'O';}
-  else computerChar = 'X';
+  
+  std::cout << "your choice was " << playerChar << "\nthe computer will be " << computerChar << std::endl;
   
   for(int i = 0; i < SIZE; i++) {
     for(int j = 0; j < SIZE; j++) {
