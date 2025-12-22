@@ -25,5 +25,14 @@ int main()
   outputFile.close();
   std::cout << "wrote file " << FILENAME << std::endl;
 
-  
+  std::ifstream inputFile(FILENAME);
+  std::string line;
+  if(inputFile)
+    {
+      while(inputFile >> line)
+	{
+	  std::cout << line << std::endl;
+	}
+      inputFile.close();
+    }
 }
