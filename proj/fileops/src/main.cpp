@@ -27,6 +27,7 @@ int main()
 
   std::ifstream inputFile(FILENAME);
   std::string line;
+  
   if(inputFile)
     {
       while(inputFile >> line)
