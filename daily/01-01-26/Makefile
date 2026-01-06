@@ -24,8 +24,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 clean:
 	rm -rfv $(OBJ_DIR) $(BIN_DIR)
-
-run: all
+run:
 	./$(TARGET)
 
 .PHONY: all clean run

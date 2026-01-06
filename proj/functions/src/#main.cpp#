@@ -65,3 +65,21 @@ void write_file(std::string filename, int cols, int rows, int starting_index, in
   output_file.close();
   std::println("Wrote to {0} lines to file {1}.", rows, filename);
 }
+void bubble_sort(std::vector<std::string>& lines)
+{
+  int max_element;
+  int index;
+  int size = lines.size();
+
+  for (max_element = size - 1; max_element > 0; max_element--)
+    {
+      for (index = 0; index < max_element; index++)
+	{
+	  if(lines[index] > lines[index + 1])
+	    {
+	      std::swap(lines[index], lines[index + 1]);
+	    }
+	}
+    }
+}
+
