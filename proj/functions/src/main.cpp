@@ -1,8 +1,9 @@
 #include <iostream>
-#include <iomanip>
 #include <fstream>
 #include <random>
 #include <print>
+#include <limits>
+#include "sorting.h"
 
 // function prototypes
 void draw_table();
@@ -18,22 +19,44 @@ int main()
 
   // main operations
   // prompt for file selection
-  std::cout << "Enter in filename to write: ";
+  std::print("Enter in filename to write: ");
   std::cin >> filename;
+  if(std::cin.fail())
+    {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+      std::println("*Error*");
+      filename = "lines.txt";
+    }  
   full_filename = file_dir + filename;
 
   // prompt for character selection
   draw_table();
-  std::cout << "Enter the bounding indexes for the random character generator: ";
+  std::print("Enter the bounding indexes for the random character generator: ");
   std::cin >> starting_index >> ending_index;
+  if(std::cin.fail())
+    {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+      std::println("*Error*");
+      starting_index = 33;
+      ending_index = 91;
+    }	
   // display comfirmation
-  std::cout << "Generating characters between " << static_cast<char>(starting_index) << " to " << static_cast<char>(ending_index) << ".";
-
-  std::cout << "\nEnter in word length followed by the number of lines to print: ";
+  std::println("Generating characters between {} to {}.", static_cast<char>(starting_index), static_cast<char>(ending_index));
+  std::print("Enter in word length followed by the number of lines to print:");
   std::cin >> word_length >> lines;
+  if(std::cin.fail())
+    {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+      std::println("*Error*");
+      word_length = 8;
+      lines = 8;     
+    }
 
   write_file(full_filename, word_length, lines, starting_index, ending_index);
-  
+
   return 0;
 }
 void draw_table()
